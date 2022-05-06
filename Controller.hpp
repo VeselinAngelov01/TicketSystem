@@ -1,0 +1,39 @@
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
+
+#include <iostream>
+#include "Date.hpp"
+#include "Hall.hpp"
+#include "Act.hpp"
+#include <fstream>
+
+const size_t DEF_SIZE = 32;
+const size_t ACT_NAME_SIZE = 100;
+const size_t PASS_SIZE = 16;
+const size_t NOTE_SIZE = 128;
+class Controller
+{
+private:
+    Hall** halls;
+    unsigned int hallsCount;
+    unsigned int capacity;
+
+    void help() const;
+    void addEvent();
+    void freeSpaces();
+    void reserve();
+    void rejectReserve();
+    void buy();
+    void listReservations();
+    void sold();
+public:
+    Controller();
+    ~Controller();
+
+    void loadHalls(char* fileName);
+
+    void Run();
+
+};
+
+#endif
