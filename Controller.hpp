@@ -7,7 +7,6 @@
 #include "Act.hpp"
 #include <fstream>
 
-const size_t DEF_SIZE = 32;
 const size_t ACT_NAME_SIZE = 100;
 const size_t PASS_SIZE = 16;
 const size_t NOTE_SIZE = 128;
@@ -16,7 +15,8 @@ class Controller
 private:
     Hall** halls;
     unsigned int hallsCount;
-    unsigned int capacity;
+
+    Date readDate();
 
     void help() const;
     void addEvent();

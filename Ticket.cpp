@@ -68,11 +68,34 @@ int Ticket::getType() const
     return this->type;
 }
 
-void Ticket::change(unsigned int row,unsigned int place,int newType,char* password=nullptr,char* note = nullptr)
+void Ticket::change(unsigned int row,unsigned int place,int newType,char* password,char* note)
 {
     this->row =row;
     this->place = place;
-    if(this->password) delete [] this->password;
+    this->type = newType;
+    if(password)
+    {
+        if(this->password) delete [] this->password;
+        this->password = new char[strlen(password)+1];
+        strcpy(this->password,password);
+    }
+    else
+    {
+        if(this->password) delete [] this->password;
+        this->password = nullptr;
+    }
+    if(note) 
+    {
+        if(this->note) delete [] this->note;
+        this->note = new char[strlen(note)+1];
+        strcpy(this->note,note);
+    }
+    else 
+    {
+        if(this->note) delete [] this->note;
+        this->note = nullptr;
+    }
+    /*if(this->password) delete [] this->password;
     this->password = new char [strlen(password)+1];
     strcpy(this->password,password);
     if(note)
@@ -85,13 +108,18 @@ void Ticket::change(unsigned int row,unsigned int place,int newType,char* passwo
     {
         delete [] this->note;
     }
-    this->type = newType;
+    */
 }
-/*
-Ticket& Ticket::operator=(const Ticket& other)
+
+Ticket& Ticket::operator=(Ticket& other)
 {
+    if(this==&other)
+    {
+        return *this;
+    }
     this->row=other.row;
     this->place = other.place;
+    this->type = other.type;
     if(other.password)
     {
         if(this->password) delete [] this->password;
@@ -114,4 +142,5 @@ Ticket& Ticket::operator=(const Ticket& other)
         if(this->note) delete [] this->note;
         this->note = nullptr;
     }
-}*/
+    return *this;
+}

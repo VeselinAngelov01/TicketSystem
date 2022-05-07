@@ -18,6 +18,7 @@ public:
     Ticket();
     ~Ticket();
 
+    Ticket& operator=(Ticket& other);
 
     unsigned int getRow() const;
     unsigned int getColumn() const;

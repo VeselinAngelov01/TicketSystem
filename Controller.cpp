@@ -2,14 +2,13 @@
 
 Controller::Controller()
 {
-    //this->halls = new Hall *[DEF_SIZE];
+    this->halls = nullptr;
     this->hallsCount = 0;
-    //this->capacity = DEF_SIZE;
 }
 
 Controller::~Controller()
 {
-    for (size_t i = 0; i < this->capacity; ++i)
+    for (size_t i = 0; i < this->hallsCount; ++i)
     {
         delete this->halls[i];
     }
@@ -67,21 +66,28 @@ void Controller::Run()
     }
 }
 
+Date Controller::readDate()
+{
+    unsigned int day, month, year, hallID;
+    std::cout << "Enter day: ";
+    std::cin >> day;
+    std::cout << "Enter month: ";
+    std::cin >> month;
+    std::cout << "Enter year: ";
+    std::cin >> year;
+    Date date(day, month, year);
+    return date;
+}
 void Controller::addEvent()
 {
     try
     {
-        unsigned int day, month, year, hallID;
+        unsigned int hallID;
         char actName[ACT_NAME_SIZE];
-        std::cout << "Enter day: ";
-        std::cin >> day;
-        std::cout << "\nEnter month: ";
-        std::cin >> month;
-        std::cout << "\nEnter year: ";
-        std::cin >> year;
-        std::cout << "\nEnter name: ";
+        std::cout << "Enter name: ";
         std::cin >> actName;
-        std::cout << "\nEnter hall: ";
+        Date date=readDate();
+        std::cout << "Enter hall: ";
         std::cin >> hallID;
         bool found = false;
         for (int i = 0; i < hallsCount; ++i)
@@ -89,19 +95,20 @@ void Controller::addEvent()
             if (halls[i]->getId() == hallID)
             {
                 found = true;
-                Date date(day, month, year);
+                
                 if (halls[i]->isFree(date))
                 {
                     Act newAct(actName, hallID, halls[i]->getRows(), halls[i]->getSizeOfRow(), date);
                     halls[i]->addAct(newAct);
                 }
                 else
-                    std::cout << "Hall is used on this day!\n";
+                    throw std::invalid_argument("Hall is used on this day!");
+                break;
             }
         }
         if (!found)
         {
-            std::cout << "Invalid hall id!\n";
+            throw std::invalid_argument("Invalid hall id!");
         }
     }
     catch (const std::exception &e)
@@ -114,17 +121,9 @@ void Controller::freeSpaces()
 {
     try
     {
-        unsigned int day, month, year;
         char actName[ACT_NAME_SIZE];
-        std::cout << "\nEnter name of act: ";
-        std::cin >> actName;
-        std::cout << "Enter day: ";
-        std::cin >> day;
-        std::cout << "\nEnter month: ";
-        std::cin >> month;
-        std::cout << "\nEnter year: ";
-        std::cin >> year;
-        Date date(day, month, year);
+        std::cout << "Enter name of act: ";
+        Date date=readDate();
         for (int i = 0; i < hallsCount; ++i)
         {
             halls[i]->findOnDate(actName, date);
@@ -140,37 +139,31 @@ void Controller::reserve()
 {
     try
     {
-        unsigned int day, month, year, row, place;
+        unsigned int row, place;
         char actName[ACT_NAME_SIZE];
         char password[PASS_SIZE];
         char note[NOTE_SIZE];
-        std::cout << "\nEnter name of act: ";
+        std::cout << "Enter name of act: ";
         std::cin >> actName;
-        std::cout << "Enter day: ";
-        std::cin >> day;
-        std::cout << "\nEnter month: ";
-        std::cin >> month;
-        std::cout << "\nEnter year: ";
-        std::cin >> year;
-        std::cout << "\nEnter row: ";
+        Date date = readDate();
+        std::cout << "Enter row: ";
         std::cin >> row;
-        std::cout << "\nEnter place: ";
+        std::cout << "Enter place: ";
         std::cin >> place;
-        std::cout << "\nEnter pasword: ";
+        std::cout << "Enter pasword: ";
         std::cin >> password;
-        std::cout << "Do you want to add note? (Y for yes,else no)";
-        char ans;
+        std::cout << "Do you want to add note? (0 for yes,else some num)";
+        int ans;
         std::cin >> ans;
-        if (ans == 'Y')
+        if (ans == 0)
         {
-            std::cout << "\nEnter note: ";
+            std::cout << "Enter note: ";
             std::cin >> note;
         }
-        Date date(day, month, year);
         int res = -1;
         for (int i = 0; i < hallsCount; ++i)
         {
-            if (ans == 'Y')
+            if (ans == 0)
             {
                 res = halls[i]->findAndReserve(actName, date, row, place, password, note);
             }
@@ -184,7 +177,7 @@ void Controller::reserve()
         }
         if (res == -1)
         {
-            std::cout << "Invalid act/date!\n";
+            throw std::invalid_argument("Invalid act/date!");
         }
     }
     catch (const std::exception &e)
@@ -197,25 +190,19 @@ void Controller::rejectReserve()
 {
     try
     {
-        unsigned int day, month, year, row, place;
+        unsigned int row, place;
         char actName[ACT_NAME_SIZE];
         char password[PASS_SIZE];
         char note[NOTE_SIZE];
         std::cout << "\nEnter name of act: ";
         std::cin >> actName;
-        std::cout << "Enter day: ";
-        std::cin >> day;
-        std::cout << "\nEnter month: ";
-        std::cin >> month;
-        std::cout << "\nEnter year: ";
-        std::cin >> year;
+        Date date = readDate();
         std::cout << "\nEnter row: ";
         std::cin >> row;
         std::cout << "\nEnter place: ";
         std::cin >> place;
         std::cout << "\nEnter pasword: ";
         std::cin >> password;
-        Date date(day, month, year);
         int res = -1;
         for (int i = 0; i < hallsCount; ++i)
         {
@@ -225,7 +212,7 @@ void Controller::rejectReserve()
         }
         if (res == -1)
         {
-            std::cout << "Invalid reservation info!\n";
+            throw std::invalid_argument("Invalid reservation info!");
         }
     }
     catch (const std::exception &e)
@@ -238,36 +225,38 @@ void Controller::buy()
 {
     try
     {
-        unsigned int day, month, year, row, place;
+        unsigned int row, place;
         char actName[ACT_NAME_SIZE];
         char password[PASS_SIZE];
         char note[NOTE_SIZE];
         std::cout << "\nEnter name of act: ";
         std::cin >> actName;
-        std::cout << "Enter day: ";
-        std::cin >> day;
-        std::cout << "\nEnter month: ";
-        std::cin >> month;
-        std::cout << "\nEnter year: ";
-        std::cin >> year;
+        Date date=readDate();
         std::cout << "\nEnter row: ";
         std::cin >> row;
         std::cout << "\nEnter place: ";
         std::cin >> place;
-        Date date(day, month, year);
         int res = -1;
         for (int i = 0; i < hallsCount; ++i)
         {
             res = halls[i]->findAct(actName, date);
             if (res != -1)
             {
-                halls[i]->buy(row, place, res);
+                int ticketType = halls[i]->specificTicketType(row, place, res);
+                if (ticketType == 1)
+                {
+                    std::cout << "Enter password: ";
+                    std::cin >> password;
+                    halls[i]->buy(row, place, res, password);
+                }
+                else
+                    halls[i]->buy(row, place, res);
                 break;
             }
         }
         if (res == -1)
         {
-            std::cout << "Invalid ticket info!\n";
+            throw std::invalid_argument("Invalid ticket info!");
         }
     }
     catch (const std::exception &e)
@@ -280,22 +269,16 @@ void Controller::listReservations()
 {
     try
     {
-        unsigned int day, month, year;
         char actName[ACT_NAME_SIZE];
-        std::cout << "\nEnter name of act (if ALL - all acts): ";
+        std::cout << "Enter name of act (if ALL - all acts): ";
         std::cin >> actName;
         int all = 0;
-        std::cout << "\nSpecific date( number ) or all dates(0)";
+        std::cout << "Specific date( number ) or all dates(0)";
         std::cin >> all;
         if (all != 0)
         {
-            std::cout << "\nEnter day (if ALL - all possible dates): ";
-            std::cin >> day;
-            std::cout << "\nEnter month: ";
-            std::cin >> month;
-            std::cout << "\nEnter year: ";
-            std::cin >> year;
-            Date date(day, month, year);
+            Date date = readDate();
+            std::cout << "Enter day (if ALL - all possible dates): ";
             int res = strcmp(actName, "ALL");
             for (int i = 0; i < hallsCount; ++i)
             {
@@ -305,7 +288,7 @@ void Controller::listReservations()
                 }
                 else
                 {
-                    halls[i]->print(actName,date);
+                    halls[i]->print(actName, date);
                 }
             }
         }
@@ -331,8 +314,7 @@ void Controller::listReservations()
     }
 }
 
-
-void Controller::loadHalls(char* fileName)
+void Controller::loadHalls(char *fileName)
 {
     std::ifstream reader(fileName);
     char buffer[32];
@@ -340,29 +322,117 @@ void Controller::loadHalls(char* fileName)
     bool firstLine = true;
     int currIndex = 0;
     int sizeOfHallArr = 0;
-    if(reader.is_open())
+    if (reader.is_open())
     {
-        while(reader.getline(buffer,32))
+        int indexToInsert = 0;
+        while (reader.getline(buffer, 32))
         {
-            if(firstLine)
+            if (firstLine)
             {
                 try
                 {
-                    sizeOfHallArr=std::stoi(buffer);
+                    sizeOfHallArr = std::stoi(buffer);
+                    this->halls = new Hall *[sizeOfHallArr];
+                    this->hallsCount = sizeOfHallArr;
                 }
-                catch(const std::exception& e)
+                catch (const std::exception &e)
                 {
                     std::cerr << "Invalid value on line 1\n";
-                }  
+                }
+                firstLine = false;
             }
             else
             {
-                
+                try
+                {
+                    int sizeOfBuff = strlen(buffer);
+                    int delCount = 0;
+                    int currIndex = 0;
+                    char tempArr[sizeOfBuff];
+                    unsigned int id, rows, sizeOfRow;
+                    for (int i = 0; i < sizeOfBuff; ++i)
+                    {
+                        if (delCount > 2)
+                        {
+                            throw std::invalid_argument("Invalid data in file!");
+                        }
+                        if (buffer[i] == ' ')
+                        {
+                            tempArr[currIndex] = '\0';
+                            currIndex = 0;
+                            if (delCount == 0)
+                            {
+                                id = std::stoi(tempArr);
+                            }
+                            else if (delCount == 1)
+                            {
+                                rows = std::stoi(tempArr);
+                            }
+                            delCount++;
+                        }
+                        else
+                        {
+                            tempArr[currIndex] = buffer[i];
+                            currIndex++;
+                        }
+                    }
+                    tempArr[currIndex] = '\0';
+                    sizeOfRow = std::stoi(tempArr);
+                    if (indexToInsert >= hallsCount)
+                    {
+                        throw std::invalid_argument("More halls than specified!");
+                    }
+                    this->halls[indexToInsert] = new Hall(id, rows, sizeOfRow);
+                    indexToInsert++;
+                }
+                catch (const std::exception &e)
+                {
+                    std::cout << e.what() << '\n';
+                }
             }
         }
     }
     else
     {
         throw std::invalid_argument("Can not open file to load halls!\nExiting...");
+    }
+}
+
+void Controller::sold()
+{
+    try
+    {
+        unsigned int id;
+        std::cout << "Enter specific id or ALL(0): ";
+        std::cin >> id;
+        Date firstDate = readDate();
+        Date secondDate = readDate();
+        int res = -1;
+        if (id == 0)
+            res = 0;
+        for (int i = 0; i < hallsCount; ++i)
+        {
+            if (id == 0)
+            {
+                halls[i]->printFromTo(firstDate, secondDate);
+            }
+            else
+            {
+                res = halls[i]->getId();
+                if (res == id)
+                {
+                    halls[i]->printFromTo(firstDate, secondDate);
+                    break;
+                }
+            }
+        }
+        if (res == -1)
+        {
+            throw std::invalid_argument("Invalid hall id!");
+        }
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << e.what() << '\n';
     }
 }

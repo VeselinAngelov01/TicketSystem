@@ -2,7 +2,7 @@
 #define ACT_H
 
 #include <cstring>
-#include "Hall.hpp"
+#include "Date.hpp"
 #include "Ticket.hpp"
 class Act
 {
@@ -20,19 +20,23 @@ public:
     ~Act();
 
     unsigned int getFreePlaces() const;
-    bool reserveTicket(unsigned int row,unsigned int place,char* password,char* note = nullptr);
-    bool removeReservation(unsigned int row,unsigned int place,char* password);
-    bool buyTicket(unsigned int row,unsigned int place);
+    void reserveTicket(unsigned int row,unsigned int place,char* password,char* note = nullptr);
+    void removeReservation(unsigned int row,unsigned int place,char* password);
+    void buyTicket(unsigned int row,unsigned int place,char* password = nullptr);
 
     void printReserved() const;
 
     Date getDate() const;
 
-    Act& operator=(const Act& other);
+    Act& operator=(Act& other);
+    Act(Act& other);
 
     char* getName() const;
     //unsigned int getFreePlaces() const;
     void printAllReserved() const;
+    void printAllSold() const;
+
+    int viewTicketType(unsigned int row,unsigned int place) const;
 };
 
 #endif

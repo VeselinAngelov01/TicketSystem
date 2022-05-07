@@ -1,7 +1,6 @@
 #ifndef HALL_H
 #define HALL_H
 
-#include "Date.hpp"
 #include "Act.hpp"
 
 const int DEF_ACT_SIZE = 10;
@@ -25,7 +24,7 @@ public:
     void findOnDate(char* actName,Date date);
     int findAndReserve(char* actName,Date date,unsigned int row,unsigned int place,char* password,char* note = nullptr);
     int removeReservation(char* actName,Date date,unsigned int row,unsigned int place,char* password);
-    int buy(unsigned int row,unsigned int place,int actIndex);
+    int buy(unsigned int row,unsigned int place,int actIndex,char* password=nullptr);
 
     unsigned int getAllPlaces() const;
     int getId() const;
@@ -38,6 +37,9 @@ public:
     void printSpecificAct(char* name) const;
     void printOnSpecificDate(Date date) const;
     void print(char* name,Date date) const;
+
+    int specificTicketType(unsigned int row,unsigned int place,int actIndex);
+    void printFromTo(Date firstDate,Date secondDate);
 };
 
 #endif

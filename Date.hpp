@@ -2,8 +2,9 @@
 #define DATE_H
 
 #include <iostream>
-
+#include <cmath>
 const unsigned int DATE_SIZE = 11;
+const int exponent = 10;
 class Date
 {
 private:
@@ -20,6 +21,8 @@ public:
     char* dateToStr() const;
 
     bool cmp(const Date& other);
+
+    friend bool less(Date first,Date second);
 };
 
 #endif
