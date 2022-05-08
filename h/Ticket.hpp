@@ -1,15 +1,15 @@
 #ifndef TICKET_H
 #define TICKET_H
 
-#include <cstring>
+#include "MyString.hpp"
 
 class Ticket
 {
 private:
     unsigned int row;
     unsigned int place;
-    char* password;
-    char* note;
+    MyString password;
+    MyString note;
     int type;
     // 0 - free
     // 1 - reserved
@@ -17,24 +17,23 @@ private:
 public:
     /// Consturctor
     Ticket();
-    /// Destructor
-    ~Ticket();
-    /// Copy operator
-    Ticket& operator=(Ticket& other);
+    Ticket(unsigned int row,unsigned int place,int type);
+    Ticket(unsigned int row,unsigned int place,int type,MyString password);
+    Ticket(unsigned int row,unsigned int place,int type,MyString password,MyString note);
     /// Return ticket row
     unsigned int getRow() const;
     /// Return ticket seat
     unsigned int getColumn() const;
     /// Return ticket note\n
-    /// Possible to return nullptr if there is no note added
-    char* getNote() const;
+    MyString getNote() const;
     /// Return ticket password\n
-    /// Possible to return nullptr if there is no password (Ticket is free or sold)
-    char* getPass() const;
+    MyString getPass() const;
     /// Return ticket type
     int getType() const;
-    /// Return change ticket status (type)
-    void change(unsigned int row,unsigned int place,int newType,char* password=nullptr,char* note = nullptr);
+    /// Change type of ticket
+    void changeType(unsigned int type);
+    /// Write to file    
+    friend std::ostream &operator<<(std::ostream &out, const Ticket &ticket);
 };
 
 #endif

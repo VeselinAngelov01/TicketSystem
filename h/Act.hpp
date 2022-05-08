@@ -1,50 +1,61 @@
 #ifndef ACT_H
 #define ACT_H
 
-#include <cstring>
 #include "Date.hpp"
 #include "Ticket.hpp"
+
+const unsigned int BUFFER_SIZE=1024;
+
 class Act
 {
 private:
-    char* name;
+    MyString name;
     Date* date;
-    int hallID;
-    Ticket** tickets;
-    unsigned int rows;
-    unsigned int places;
+    Ticket* tickets;
     unsigned int reservedCount;
     unsigned int soldCount;
+    unsigned int ticketsCount;
+    unsigned int ticketCapacity;
+    int findTicketIndex(unsigned int row,unsigned int column);
+    void resize();
+
+    void removeTicket(unsigned int ticketIndex);
 public:
-    /// Constructor
-    Act(char* name,unsigned int hallID,unsigned int rows,unsigned int places,Date date);
+    /// Constructors
+    Act(MyString name,Date date);
+    Act(MyString name,Date date,Ticket* tickets,unsigned int reserved,unsigned int sold,unsigned int count,unsigned int capacity);
+    Act(MyString name,Date date,unsigned int reserved,unsigned int sold,unsigned int count,unsigned int capacity);
     /// Destructor
     ~Act();
     /// Copy operator
-    Act& operator=(Act& other);
+    Act& operator=(const Act& other);
     /// Copy constructor
-    Act(Act& other);
-    /// Return all places that are not reserved and sold
-    unsigned int getFreePlaces() const;
+    Act(const Act& other);
     /// Reserve a ticket
-    void reserveTicket(unsigned int row,unsigned int place,char* password,char* note = nullptr);
+    void reserveTicket(unsigned int row,unsigned int place,MyString password);
+    /// Reserve a ticket
+    void reserveTicket(unsigned int row,unsigned int place,MyString password,MyString note);
     /// Remove already reserved ticket
-    void removeReservation(unsigned int row,unsigned int place,char* password);
+    void removeReservation(unsigned int row,unsigned int place,MyString password);
     /// Buy a ticket
-    void buyTicket(unsigned int row,unsigned int place,char* password = nullptr);
-    /// Prints all reserved tickets
-    void printAllReserved() const;
-    /// Prints all sold tickets
-    void printAllSold() const;
+    void buyTicket(unsigned int row,unsigned int place);
+    /// Return  all reserved tickets
+    unsigned int getReserved() const;
+    /// Return  all sold tickets
+    unsigned int getSold() const;
+    /// Return total tickets;
+    unsigned int getTotal() const;
     /// Return date of act
     Date getDate() const;
     /// Return name of act
-    char* getName() const;
-    /// Return type of specific ticket\n
-    /// 0 - free\n
-    /// 1 - reserved\n
-    /// 2 - sold
-    int viewTicketType(unsigned int row,unsigned int place) const;
+    MyString getName() const;
+    /// Print all tickets of specified type
+    void printAll(unsigned int type) const;
+
+    /// Write to file
+    friend std::ostream &operator<<(std::ostream &out, const Act &act);
+    /// Read from file
+    void readFromFile(MyString fileName);
 };
 
 #endif

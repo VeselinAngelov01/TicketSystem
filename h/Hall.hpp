@@ -2,8 +2,6 @@
 #define HALL_H
 
 #include "Act.hpp"
-
-const int DEF_ACT_SIZE = 10;
 class Hall
 {
 private:
@@ -18,6 +16,7 @@ private:
 public:
     ///Constructor
     Hall(unsigned int id,unsigned int rows,unsigned int sizeOfRows);
+    Hall(unsigned int id,unsigned int rows,unsigned int sizeOfRows,unsigned int sizeOfActs);
     ///Destructor
     ~Hall();
     /// Add act to current hall
@@ -25,13 +24,14 @@ public:
     /// Return if there are no acts in current hall on this day
     bool isFree(Date date) const;
     /// Print all free places for specified act on daye
-    void findOnDate(char* actName,Date date);
+    void findOnDate(MyString actName,Date date);
     /// Reserve ticket
-    int findAndReserve(char* actName,Date date,unsigned int row,unsigned int place,char* password,char* note = nullptr);
+    int findAndReserve(MyString actName,Date date,unsigned int row,unsigned int place,MyString password);
+    int findAndReserve(MyString actName,Date date,unsigned int row,unsigned int place,MyString password,MyString note);
     /// Remove reservation
-    int removeReservation(char* actName,Date date,unsigned int row,unsigned int place,char* password);
+    int removeReservation(MyString actName,Date date,unsigned int row,unsigned int place,MyString password);
     /// Buy ticket
-    int buy(unsigned int row,unsigned int place,int actIndex,char* password=nullptr);
+    void buy(unsigned int actIndex,unsigned int row,unsigned int place);
     /// Return all seats
     unsigned int getAllPlaces() const;
     /// Return hall id
@@ -43,20 +43,25 @@ public:
     
     /// Return index of act in this hall\n
     /// (-1 if there is no act)
-    int findAct(char* actName,Date date);
+    int findAct(MyString actName,Date date);
     /// Print all acts on all days
     void printAllActs() const;
     /// Print specified act on all days
-    void printSpecificAct(char* name) const;
+    void printSpecificAct(MyString name) const;
     /// Print all acts on specified day
     void printOnSpecificDate(Date date) const;
     /// Print act on date
-    void print(char* name,Date date) const;
+    void print(MyString name,Date date) const;
     /// Return ticket type\n
     /// (See more on Ticket.hpp)
-    int specificTicketType(unsigned int row,unsigned int place,int actIndex);
     /// Print acts from date to date (inclusive)
     void printFromTo(Date firstDate,Date secondDate);
+    /// Write to file
+    friend std::ostream &operator<<(std::ostream &out, const Hall &hall);
+    /// Read from file
+    void readFromFile(MyString file);
+    /// Return size of all acts in current hall
+    unsigned int getSizeOfActs() const;
 };
 
 #endif
