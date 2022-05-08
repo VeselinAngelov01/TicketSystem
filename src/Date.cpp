@@ -64,39 +64,37 @@ bool Date::cmp(const Date &other)
 {
     return (day == other.day && month == other.month && year == other.year);
 }
-char *Date::dateToStr() const
+MyString Date::dateToStr() const
 {
     
-    char *str = new char[DATE_SIZE];
-    int currentIndex = 0;
+    MyString str;
     if (day < exponent)
     {
-        str[currentIndex++] = '0';
-        str[currentIndex++] = day%exponent+48;
+        str.append('0');
+        str.append(day%exponent+48);
     }
     else
     {
-        str[currentIndex++] = day/exponent+48;
-        str[currentIndex++] = day%exponent+48;
+        str.append(day/exponent+48);
+        str.append(day%exponent+48);
     }
-    str[currentIndex++] = '-';
+   str.append('-');
     if(month<exponent)
     {
-        str[currentIndex++] = '0';
-        str[currentIndex++] = month%exponent+48;
+        str.append('0');
+        str.append(month%exponent+48);
     }
     else
     {
-        str[currentIndex++] = month/exponent+48;
-        str[currentIndex++] = month%exponent+48;
+        str.append(month/exponent+48);
+        str.append(month%exponent+48);
     }
-    str[currentIndex++]='-';
+   str.append('-');
     int del = std::pow(exponent,3);
-    str[currentIndex++] = year/del + 48;
-    str[currentIndex++] = (year%del)/(del/10) + 48;
-    str[currentIndex++] = (year%(del/10))/(del/100)+48;
-    str[currentIndex++] = year%exponent+48;
-    str[currentIndex]='\0';
+    str.append(year/del + 48);
+    str.append((year%del)/(del/10) + 48);
+    str.append((year%(del/10))/(del/100)+48);
+    str.append(year%exponent+48);
     return str;
 }
 
@@ -119,4 +117,10 @@ bool less(Date first, Date second)
             else return true;
         }
     }
+}
+
+std::ostream &operator<<(std::ostream &out, const Date &date)
+{
+    out<<date.getDay() <<" "<<date.getMonth() <<" "<< date.getYear();
+    return out;
 }

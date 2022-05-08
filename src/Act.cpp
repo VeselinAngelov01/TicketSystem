@@ -1,186 +1,228 @@
 #include "../h/Act.hpp"
 
-Act::Act(char *name, unsigned int hallID, unsigned int rows, unsigned int places, Date date)
+Act::Act(MyString name, Date date)
 {
-    this->hallID = hallID;
     this->date = new Date(date);
     this->reservedCount = 0;
     this->soldCount = 0;
-    this->rows = rows;
-    this->places = places;
-    this->name = new char[strlen(name) + 1];
-    strcpy(this->name, name);
-    this->tickets = new Ticket *[rows];
-    for (int i = 0; i < rows; ++i)
+    this->ticketsCount = 0;
+    this->tickets = nullptr;
+    this->ticketCapacity = 1;
+    this->name = name;
+}
+
+Act::Act(MyString name, Date date, Ticket *tickets, unsigned int reserved, unsigned int sold, unsigned int count, unsigned int capacity)
+{
+    this->name = name;
+    this->date = new Date(date);
+    this->reservedCount = reserved;
+    this->soldCount = sold;
+    this->ticketsCount = count;
+    this->ticketCapacity = capacity;
+    this->tickets = new Ticket[ticketsCount];
+    for (int i = 0; i < ticketsCount; ++i)
     {
-        this->tickets[i] = new Ticket[places];
+        this->tickets[i] = tickets[i];
     }
 }
 
+Act::Act(MyString name, Date date, unsigned int reserved, unsigned int sold, unsigned int count, unsigned int capacity)
+{
+    this->name = name;
+    this->date = new Date(date);
+    this->reservedCount = reserved;
+    this->soldCount = sold;
+    this->ticketsCount = count;
+    this->ticketCapacity = capacity;
+    this->tickets = new Ticket[ticketsCount];
+}
 Act::~Act()
 {
-    for (int i = 0; i < this->rows; ++i)
+    delete this->date;
+    if (tickets)
+        delete[] tickets;
+}
+
+void Act::resize()
+{
+    this->ticketCapacity *= 2;
+    Ticket *newTickets = new Ticket[ticketCapacity];
+    for (int i = 0; i < ticketsCount; ++i)
     {
-        delete[] this->tickets[i];
+        newTickets[i] = this->tickets[i];
     }
     delete[] this->tickets;
-    delete[] this->name;
+    this->tickets = newTickets;
 }
 
-unsigned int Act::getFreePlaces() const
+int Act::findTicketIndex(unsigned int row, unsigned int column)
 {
-    return rows * places - reservedCount - soldCount;
+    for (int i = 0; i < ticketsCount; ++i)
+    {
+        if (tickets[i].getRow() == row && tickets[i].getColumn() == column)
+            return i;
+    }
+    return -1;
 }
 
-void Act::reserveTicket(unsigned int row, unsigned int place, char *password, char *note)
+void Act::reserveTicket(unsigned int row, unsigned int place, MyString password)
 {
-    int type = this->tickets[row][place].getType();
-    if (type == 2)
+    int index = findTicketIndex(row, place);
+    if (index == -1)
     {
-        throw std::invalid_argument("Ticket is sold!");
-    }
-    else if (type == 1)
-    {
-        throw std::invalid_argument("Ticket is already reserved!");
-    }
-    else
-    {
-        this->tickets[row][place].change(row, place, 1, password, note);
+        // seat if free -> reserve
+        Ticket temp(row, place, 1, password);
+        if (!tickets)
+            tickets = new Ticket[ticketCapacity];
+        else if (ticketsCount >= ticketCapacity)
+            resize();
+
+        this->tickets[ticketsCount++] = temp;
         this->reservedCount++;
     }
+    else
+    {
+        int type = this->tickets[index].getType();
+        if (type == 1)
+            throw std::invalid_argument("Place is already reserved!");
+        else if (type == 2)
+            throw std::invalid_argument("Place is sold!");
+        else
+            throw std::logic_error("Act.cpp func reserveTicket");
+    }
 }
 
-void Act::removeReservation(unsigned int row, unsigned int place, char *password)
+void Act::reserveTicket(unsigned int row, unsigned int place, MyString password, MyString note)
 {
-    int type = this->tickets[row][place].getType();
-    if (type == 2)
+    int index = findTicketIndex(row, place);
+    if (index == -1)
     {
-        throw std::invalid_argument("Ticket is sold!");
-    }
-    else if (type == 0)
-    {
-        throw std::invalid_argument("Ticket is not reserved!");
+        // seat if free -> reserve
+        Ticket temp(row, place, 1, password, note);
+        if (!tickets)
+            tickets = new Ticket[ticketCapacity];
+        else if (ticketsCount >= ticketCapacity)
+            resize();
+        this->tickets[ticketsCount++] = temp;
+        this->reservedCount++;
     }
     else
     {
-        if (strcmp(password, this->tickets[row][place].getPass()) == 0)
-        {
-            this->tickets[row][place].change(row, place, 0, password);
-            this->reservedCount--;
-        }
+        int type = this->tickets[index].getType();
+        if (type == 1)
+            throw std::invalid_argument("Place is already reserved!");
+        else if (type == 2)
+            throw std::invalid_argument("Place is sold!");
         else
-            throw std::invalid_argument("Wrong password!");
+            throw std::logic_error("Act.cpp func reserveTicket");
     }
 }
 
-void Act::buyTicket(unsigned int row, unsigned int place,char* password)
+void Act::removeTicket(unsigned int ticketIndex)
 {
-    int type = this->tickets[row][place].getType();
-    if (type == 2)
+    this->ticketsCount--;
+    for (int i = ticketIndex; i < ticketsCount; ++i)
     {
-        throw std::invalid_argument("Ticket is sold!");
+        this->tickets[i] = this->tickets[i + 1];
     }
+}
+void Act::removeReservation(unsigned int row, unsigned int place, MyString password)
+{
+    int index = findTicketIndex(row, place);
+    if (index == -1)
+        throw std::invalid_argument("There is no reservation!");
+    int type = this->tickets[index].getType();
+    if (type == 2)
+        throw std::invalid_argument("Ticket is sold!");
     else if (type == 1)
     {
-        if(strcmp(this->tickets[row][place].getPass(),password)==0)
-        {
-            this->tickets[row][place].change(row, place, 2);
-            this->soldCount++;
-        }
-        else throw std::invalid_argument("Invalid password!");
+        removeTicket(index);
+        reservedCount--;
+    }
+    else
+        throw std::logic_error("Act.cpp func removeReservation");
+}
+
+void Act::buyTicket(unsigned int row, unsigned int place)
+{
+    int index = findTicketIndex(row, place);
+    if (index == -1)
+    {
+        Ticket temp(row, place, 2);
+        if (!tickets)
+            tickets = new Ticket[ticketCapacity];
+        else if (ticketsCount >= ticketCapacity)
+            resize();
+        this->tickets[ticketsCount++] = temp;
+        this->soldCount++;
     }
     else
     {
-        this->tickets[row][place].change(row, place, 2);
-        this->soldCount++;
-    }
-}
 
-void Act::printAllReserved() const
-{
-    int cnt = 0;
-    for (int i = 0; i < rows; ++i)
-    {
-        for (int j = 0; j < places; ++j)
+        int type = this->tickets[index].getType();
+        if (type == 2)
+            throw std::invalid_argument("Ticket is sold!");
+        else if (type == 1)
         {
-            if (tickets[i][j].getType() == 1)
+            std::cout << "Ticket is already reserved! Enter password: ";
+            char buffer[BUFFER_SIZE];
+            std::cin >> buffer;
+            MyString pass(buffer);
+            if (strcmp(pass.getData(), tickets[index].getPass().getData()) == 0)
             {
-                cnt++;
+                reservedCount--;
+                soldCount++;
+                tickets[index].changeType(2);
+            }
+            else
+            {
+                std::cout << "Wrong password!\n";
             }
         }
+        else
+            throw std::logic_error("Act.cpp func buy ticket");
     }
-    std::cout << cnt << "\n";
 }
 
-void Act::printAllSold() const
+unsigned int Act::getReserved() const
 {
-    int cnt = 0;
-    for (int i = 0; i < rows; ++i)
-    {
-        for (int j = 0; j < places; ++j)
-        {
-            if (tickets[i][j].getType() == 2)
-            {
-                cnt++;
-            }
-        }
-    }
-    std::cout << cnt << "\n";
+    return this->reservedCount;
 }
 
-Act::Act(Act &other)
+unsigned int Act::getSold() const
 {
+    return this->soldCount;
+}
 
-    this->name = new char[strlen(other.name) + 1];
-    strcpy(this->name, other.name);
+Act::Act(const Act &other)
+{
+    this->name = other.name;
     this->date = new Date(other.getDate());
-
-    this->hallID = other.hallID;
-    this->rows = other.rows;
-    this->places = other.places;
     this->reservedCount = other.reservedCount;
     this->soldCount = other.soldCount;
-    this->tickets = new Ticket *[rows];
-    for (int i = 0; i < rows; ++i)
+    this->tickets = new Ticket[other.ticketCapacity];
+    this->ticketsCount = other.ticketsCount;
+    this->ticketCapacity = other.ticketCapacity;
+    for (int i = 0; i < ticketsCount; ++i)
     {
-        this->tickets[i] = new Ticket[places];
-        for (int j = 0; j < places; ++j)
-        {
-            this->tickets[i][j] = other.tickets[i][j];
-        }
+        this->tickets[i] = other.tickets[i];
     }
 }
-Act &Act::operator=(Act &other)
+Act &Act::operator=(const Act &other)
 {
     if (this == &other)
     {
         return *this;
     }
-
-    delete[] this->name;
-    this->name = new char[strlen(other.name) + 1];
-    strcpy(this->name, other.name);
-    delete[] this->date;
+    this->name = other.name;
+    delete this->date;
     this->date = new Date(other.getDate());
-    this->hallID = other.hallID;
-    for (int i = 0; i < rows; ++i)
-    {
-        delete[] this->tickets[i];
-    }
-    delete[] this->tickets;
-    this->rows = other.rows;
-    this->places = other.places;
     this->reservedCount = other.reservedCount;
     this->soldCount = other.soldCount;
-    this->tickets = new Ticket *[rows];
-    for (int i = 0; i < rows; ++i)
-    {
-        this->tickets[i] = new Ticket[places];
-        for (int j = 0; j < places; ++j)
-        {
-            this->tickets[i][j] = other.tickets[i][j];
-        }
-    }
+    if (tickets)
+        delete[] this->tickets;
+    this->tickets = new Ticket[other.ticketsCount];
+    this->ticketsCount = other.ticketsCount;
     return *this;
 }
 
@@ -189,12 +231,108 @@ Date Act::getDate() const
     return *this->date;
 }
 
-char *Act::getName() const
+MyString Act::getName() const
 {
     return this->name;
 }
-
-int Act::viewTicketType(unsigned int row, unsigned int place) const
+unsigned int Act::getTotal() const
 {
-    return this->tickets[row][place].getType();
+    return this->ticketsCount;
+}
+
+std::ostream &operator<<(std::ostream &out, const Act &act)
+{
+    out << act.name << " " << act.getDate() << " " << act.ticketCapacity << " " << act.getTotal() << " " << act.getReserved() << " " << act.getSold() << " ";
+    unsigned int ticketCount = act.getTotal();
+    MyString fileName(act.getName());
+    fileName.append('.');
+    fileName.append('t');
+    fileName.append('x');
+    fileName.append('t');
+    out << fileName;
+    std::ofstream writer(fileName.getData());
+    if (writer.is_open())
+    {
+        writer << act.getTotal() << '\n';
+        for (int i = 0; i < ticketCount; ++i)
+        {
+            writer << act.tickets[i] << '\n';
+        }
+        writer.close();
+    }
+    else
+        throw std::invalid_argument("Can not open Tickets.txt");
+    return out;
+}
+
+void Act::printAll(unsigned int type) const
+{
+    for (int i = 0; i < ticketsCount; ++i)
+    {
+        if (tickets[i].getType() == type)
+        {
+            std::cout << tickets[i].getRow() << "-" << tickets[i].getColumn() << '\n';
+        }
+    }
+}
+
+void Act::readFromFile(MyString fileName)
+{
+    std::ifstream reader;
+    try
+    {
+        reader.open(fileName.getData(), std::ios::in);
+        char buffer[BUFFER_SIZE];
+        char secondBuff[BUFFER_SIZE];
+        if (reader.is_open())
+        {
+            reader >> buffer;
+            this->ticketsCount = std::stoi(buffer);
+            this->tickets = new Ticket[ticketsCount];
+            this->ticketCapacity = ticketsCount;
+            int currentTicket = 0;
+            unsigned int row, place;
+            int type;
+            while (reader >> row >> place >> type)
+            {
+                if (currentTicket >= ticketsCount)
+                    throw std::invalid_argument("Invalid data in file Ticket.txt");
+
+                char c;
+                reader.get(c);
+                if (c != '\n')
+                {
+                    reader >> buffer;
+                    reader.get(c);
+                    MyString pass(buffer);
+                    if (c != '\n')
+                    {
+                        reader >> secondBuff;
+                        MyString note(secondBuff);
+                        Ticket t(row, place, type, pass, note);
+                        this->tickets[currentTicket++] = t;
+                    }
+                    else
+                    {
+                        Ticket t(row, place, type, pass);
+                        this->tickets[currentTicket++] = t;
+                    }
+                }
+                else
+                {
+                    Ticket t(row, place, type);
+                    this->tickets[currentTicket++] = t;
+                }
+                
+                    
+            }
+            reader.close();
+        }
+        else
+            throw std::invalid_argument("Can not read from file!");
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << e.what() << '\n';
+    }
 }

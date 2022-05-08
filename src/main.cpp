@@ -5,7 +5,8 @@
 int main()
 {
     Controller controller;
-    controller.loadHalls("Halls.txt");
+    controller.readFromFile();
     controller.Run();
+    controller.writeToFile();
     return 0;
 }

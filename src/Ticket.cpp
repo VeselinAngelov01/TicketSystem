@@ -4,16 +4,29 @@ Ticket::Ticket()
 {
     this->row = 0;
     this->place = 0;
-    this->password = nullptr;
-    this->note = nullptr;
     this->type = 0;
 }
-Ticket::~Ticket()
+Ticket::Ticket(unsigned int row, unsigned int place, int type)
 {
-    if(password) delete [] this->password;
-    if(note) delete [] this->note;
+    this->row = row;
+    this->place = place;
+    this->type = type;
 }
-
+Ticket::Ticket(unsigned int row, unsigned int place, int type, MyString password)
+{
+    this->row = row;
+    this->place = place;
+    this->type = type;
+    this->password = password;
+}
+Ticket::Ticket(unsigned int row, unsigned int place, int type, MyString password, MyString note)
+{
+    this->row = row;
+    this->place = place;
+    this->type = type;
+    this->password = password;
+    this->note = note;
+}
 unsigned int Ticket::getRow() const
 {
     return this->row;
@@ -24,13 +37,11 @@ unsigned int Ticket::getColumn() const
     return this->place;
 }
 
-// possible to return nullptr
-char* Ticket::getNote() const
+MyString Ticket::getNote() const
 {
     return this->note;
 }
-// possible to return nullptr
-char* Ticket::getPass() const
+MyString Ticket::getPass() const
 {
     return this->password;
 }
@@ -40,65 +51,17 @@ int Ticket::getType() const
     return this->type;
 }
 
-void Ticket::change(unsigned int row,unsigned int place,int newType,char* password,char* note)
+void Ticket::changeType(unsigned int type)
 {
-    this->row =row;
-    this->place = place;
-    this->type = newType;
-    if(password)
-    {
-        if(this->password) delete [] this->password;
-        this->password = new char[strlen(password)+1];
-        strcpy(this->password,password);
-    }
-    else
-    {
-        if(this->password) delete [] this->password;
-        this->password = nullptr;
-    }
-    if(note) 
-    {
-        if(this->note) delete [] this->note;
-        this->note = new char[strlen(note)+1];
-        strcpy(this->note,note);
-    }
-    else 
-    {
-        if(this->note) delete [] this->note;
-        this->note = nullptr;
-    }
+    this->type=type;
 }
 
-Ticket& Ticket::operator=(Ticket& other)
+std::ostream &operator<<(std::ostream &out, const Ticket &ticket)
 {
-    if(this==&other)
-    {
-        return *this;
-    }
-    this->row=other.row;
-    this->place = other.place;
-    this->type = other.type;
-    if(other.password)
-    {
-        if(this->password) delete [] this->password;
-        this->password = new char[strlen(other.password)+1];
-        strcpy(this->password,other.password);
-    }
-    else
-    {
-        if(this->password) delete [] this->password;
-        this->password = nullptr;
-    }
-    if(other.note) 
-    {
-        if(this->note) delete [] this->note;
-        this->note = new char[strlen(other.note)+1];
-        strcpy(this->note,other.note);
-    }
-    else 
-    {
-        if(this->note) delete [] this->note;
-        this->note = nullptr;
-    }
-    return *this;
+    out << ticket.getRow() << " " << ticket.getColumn() << " " << ticket.getType();
+    if (ticket.getPass().getSize() > 0)
+        out << " " << ticket.getPass();
+    if (ticket.getNote().getSize() > 0)
+        out << " " << ticket.getNote();
+    return out;
 }
