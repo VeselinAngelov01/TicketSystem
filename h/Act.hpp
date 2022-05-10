@@ -4,11 +4,11 @@
 #include "Date.hpp"
 #include "Ticket.hpp"
 
-const unsigned int BUFFER_SIZE=1024;
 
 class Act
 {
 private:
+    
     MyString name;
     Date* date;
     Ticket* tickets;
@@ -56,6 +56,9 @@ public:
     friend std::ostream &operator<<(std::ostream &out, const Act &act);
     /// Read from file
     void readFromFile(MyString fileName);
+
+    /// Buffer for reading from file
+    static const unsigned int BUFFER_SIZE=1024;
 };
 
 #endif
