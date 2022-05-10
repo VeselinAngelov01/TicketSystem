@@ -8,6 +8,12 @@ Controller::Controller()
     this->halls[1] = new Hall(2, 10, 30);
 }
 
+Controller &Controller::instance()
+{
+    static Controller inst;
+    inst.readFromFile();
+    return inst;
+}
 Controller::~Controller()
 {
     for (size_t i = 0; i < this->hallsCount; ++i)
@@ -19,9 +25,9 @@ Controller::~Controller()
 
 MyString Controller::readString()
 {
-    char BUFFER_SIZE[1024];
-    std::cin >> BUFFER_SIZE;
-    MyString res(BUFFER_SIZE);
+    char BUFFER[Act::BUFFER_SIZE];
+    std::cin >> BUFFER;
+    MyString res(BUFFER);
     return res;
 }
 void Controller::help() const
@@ -37,6 +43,7 @@ void Controller::Run()
         std::cin >> currentChoice;
         if (currentChoice == 0)
         {
+            writeToFile();
             std::cout << "Exiting!\n";
             break;
         }
@@ -315,16 +322,26 @@ void Controller::sold()
     try
     {
         unsigned int id;
-        std::cout << "Enter specific id or ALL(0): ";
-        std::cin >> id;
+        std::cout << "Enter specific id or ALL: ";
+        MyString stId = readString();
+        bool specificHall = true;
+        try
+        {
+            id = std::stoi(stId.getData());
+        }
+        catch (const std::exception &e)
+        {
+            specificHall = false;
+        }
+
         Date firstDate = readDate();
         Date secondDate = readDate();
         int res = -1;
-        if (id == 0)
+        if (!specificHall)
             res = 0;
         for (int i = 0; i < hallsCount; ++i)
         {
-            if (id == 0)
+            if (!specificHall)
             {
                 halls[i]->printFromTo(firstDate, secondDate);
             }
@@ -348,8 +365,6 @@ void Controller::sold()
         std::cout << e.what() << '\n';
     }
 }
-
-///////////////////////////////////
 
 void Controller::writeToFile()
 {
@@ -380,21 +395,21 @@ void Controller::readFromFile()
     try
     {
         reader.open("Halls.txt", std::ios::in);
-        char buffer[BUFFER_SIZE];
+        char buffer[Act::BUFFER_SIZE];
         if (reader.is_open())
         {
             reader >> buffer;
             this->hallsCount = std::stoi(buffer);
             this->halls = new Hall *[hallsCount];
             int currentHall = 0;
-            unsigned int id,row,sizeOfRow,sizeOfActs;
-            char fileName[BUFFER_SIZE];
+            unsigned int id, row, sizeOfRow, sizeOfActs;
+            char fileName[Act::BUFFER_SIZE];
             while (reader >> id >> row >> sizeOfRow >> sizeOfActs >> fileName)
             {
                 if (currentHall >= hallsCount)
                     throw std::invalid_argument("Invalid data in file Halls.txt");
                 MyString file(fileName);
-                
+
                 this->halls[currentHall] = new Hall(id, row, sizeOfRow, sizeOfActs);
                 this->halls[currentHall++]->readFromFile(fileName);
             }

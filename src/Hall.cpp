@@ -245,7 +245,7 @@ void Hall::readFromFile(MyString file)
     try
     {
         reader.open(file.getData(), std::ios::in);
-        char buffer[BUFFER_SIZE];
+        char buffer[Act::BUFFER_SIZE];
         if (reader.is_open())
         {
             reader >> buffer;
@@ -254,7 +254,7 @@ void Hall::readFromFile(MyString file)
             this->capacityActs = sizeOfActs;
             
             int currentAct = 0;
-            char nameBuffer[BUFFER_SIZE],nextFile[BUFFER_SIZE];
+            char nameBuffer[Act::BUFFER_SIZE],nextFile[Act::BUFFER_SIZE];
             unsigned int ticketCapacity,ticketSize,reservedCount,soldCount;
             unsigned int day,month,year;
             while (reader >> nameBuffer >> day >> month >> year >> ticketCapacity >> ticketSize>> reservedCount>> soldCount>> nextFile)

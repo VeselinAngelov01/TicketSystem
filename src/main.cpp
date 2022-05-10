@@ -4,9 +4,7 @@
 /// Here can be specified file to be read
 int main()
 {
-    Controller controller;
-    controller.readFromFile();
+    Controller controller = Controller::instance();
     controller.Run();
-    controller.writeToFile();
     return 0;
 }
