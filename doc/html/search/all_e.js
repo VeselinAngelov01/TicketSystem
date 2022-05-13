@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['removereservation_55',['removeReservation',['../class_act.html#abddf4e89c2c6e493b05e2c25258326f0',1,'Act::removeReservation()'],['../class_hall.html#a69473c6851f17063c467b3136c35a141',1,'Hall::removeReservation()']]],
-  ['reserveticket_56',['reserveTicket',['../class_act.html#afb7c802421d249e06f86afcda301ecb5',1,'Act']]],
-  ['run_57',['Run',['../class_controller.html#a17abb2cec6c0109e9b2df3cdc082eaad',1,'Controller']]]
+  ['_7eact_66',['~Act',['../class_act.html#ad8467a168e4139452daf941288e23814',1,'Act']]],
+  ['_7econtroller_67',['~Controller',['../class_controller.html#a0ab87934c4f7a266cfdb86e0f36bc1b5',1,'Controller']]],
+  ['_7ehall_68',['~Hall',['../class_hall.html#a28d5f4ed9d21684b7359dc980eacb8a0',1,'Hall']]],
+  ['_7emystring_69',['~MyString',['../class_my_string.html#a7bee4fe8ad82a0b7b8f65b02054b156b',1,'MyString']]]
 ];

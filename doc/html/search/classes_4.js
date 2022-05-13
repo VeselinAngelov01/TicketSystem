@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ticket_71',['Ticket',['../class_ticket.html',1,'']]]
+  ['mystring_74',['MyString',['../class_my_string.html',1,'']]]
 ];

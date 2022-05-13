@@ -1,6 +1,24 @@
 var searchData=
 [
-  ['findact_19',['findAct',['../class_hall.html#af63e5995fa4c92ca848f85f49764905d',1,'Hall']]],
-  ['findandreserve_20',['findAndReserve',['../class_hall.html#ae3a6f549e6f09c791f95b482634a9d0e',1,'Hall']]],
-  ['findondate_21',['findOnDate',['../class_hall.html#a190bf3af4a6c3e333418e7af8fe8418a',1,'Hall']]]
+  ['getallplaces_20',['getAllPlaces',['../class_hall.html#a0eaad68e3a340d4e3a02451fac3c99f4',1,'Hall']]],
+  ['getcolumn_21',['getColumn',['../class_ticket.html#aa614a181dc290c4b0c21636185e4a03f',1,'Ticket']]],
+  ['getcontroller_22',['getController',['../class_controller.html#a127b349126ae41b6e435c1fcf2d28ee0',1,'Controller']]],
+  ['getdata_23',['getData',['../class_my_string.html#a724c478ad293cd57d27993a33ee1b7f5',1,'MyString']]],
+  ['getdate_24',['getDate',['../class_act.html#a672e119d65c1cca366267f2dfcb796aa',1,'Act']]],
+  ['getday_25',['getDay',['../class_date.html#a13855b25efb79eaf7dccf08555421a1d',1,'Date']]],
+  ['getid_26',['getId',['../class_hall.html#a901769633958f4b7430159875c70a686',1,'Hall']]],
+  ['getmonth_27',['getMonth',['../class_date.html#a6152596dcf2e1e78e2095ea518de59e7',1,'Date']]],
+  ['getname_28',['getName',['../class_act.html#a7e3f66e3e45207564af9a45a0eb39a31',1,'Act']]],
+  ['getnote_29',['getNote',['../class_ticket.html#a065cb668b2c7f1df4e3e1c560db1bcfe',1,'Ticket']]],
+  ['getpass_30',['getPass',['../class_ticket.html#ab74e55d82362d3d7eb00705a42f22f03',1,'Ticket']]],
+  ['getreserved_31',['getReserved',['../class_act.html#af8a43791c9db2d7d99872c398e435caf',1,'Act']]],
+  ['getrow_32',['getRow',['../class_ticket.html#acf82f4bb511cf881b5b9b4bb7dffe508',1,'Ticket']]],
+  ['getrows_33',['getRows',['../class_hall.html#a41501c141ffb6d2d0b5e2f84ee8e57c6',1,'Hall']]],
+  ['getsize_34',['getSize',['../class_my_string.html#ab9f24521ba68569e54ae52cf2c38b826',1,'MyString']]],
+  ['getsizeofacts_35',['getSizeOfActs',['../class_hall.html#a4859f01dc960ce4b06022f63eb79ffed',1,'Hall']]],
+  ['getsizeofrow_36',['getSizeOfRow',['../class_hall.html#a61b429b49cbb14b737f6e0ce71875af7',1,'Hall']]],
+  ['getsold_37',['getSold',['../class_act.html#a77be4d5bbd290a7a25ec739234a57a2f',1,'Act']]],
+  ['gettotal_38',['getTotal',['../class_act.html#ad9bb6218917761ba72cbb60f98cc8f0b',1,'Act']]],
+  ['gettype_39',['getType',['../class_ticket.html#a024ebbc16ad163568d9b1c78a0b2bdc6',1,'Ticket']]],
+  ['getyear_40',['getYear',['../class_date.html#a597b505c264a24d34369c43119fc4e6e',1,'Date']]]
 ];
