@@ -9,8 +9,9 @@ class Controller
 private:
     Hall** halls;
     unsigned int hallsCount;
-    /// Constructor
+    /// Default constructor
     Controller();
+    /// Read day from standart input
     Date readDate();
 
     void help() const;
@@ -21,22 +22,21 @@ private:
     void buy();
     void listReservations();
     void sold();
-
+    /// Read string from standart input
     MyString readString();
-
     /// Write data to file
     void writeToFile();
     /// Read data from file
     void readFromFile();
+    /// Instance object
+    static Controller* controller;
 public:
-    /// Function to initialize object
-    static Controller& instance();
+    /// Return object
+    static Controller* getController();
     /// Destructor
     ~Controller();
     /// Starting function
     void Run();
-    
-
 };
 
 #endif

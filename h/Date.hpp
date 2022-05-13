@@ -3,13 +3,14 @@
 
 #include "MyString.hpp"
 
-const int exponent = 10;
 class Date
 {
 private:
     unsigned int day;
     unsigned int month;
     unsigned int year;
+
+    static const int exponent = 10;
 public:
     /// Constructor
     Date(unsigned int day,unsigned int month,unsigned int year);
