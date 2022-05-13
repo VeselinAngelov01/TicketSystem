@@ -1,3 +1,3 @@
 2
-Purvo 1 1 2001 2 2 0 2 Purvo.txt
+Purvo 1 1 2001 4 3 1 2 Purvo.txt
 Treto 1 3 2003 3 3 2 1 Treto.txt
