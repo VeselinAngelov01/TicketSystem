@@ -86,9 +86,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a597b505c264a24d34369c43119fc4e6e"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_date.html#a597b505c264a24d34369c43119fc4e6e">getYear</a> () const</td></tr>
 <tr class="memdesc:a597b505c264a24d34369c43119fc4e6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return year.  <a href="class_date.html#a597b505c264a24d34369c43119fc4e6e">More...</a><br /></td></tr>
 <tr class="separator:a597b505c264a24d34369c43119fc4e6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5fb25f0c7f8bdad88b9474f6047a673"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_date.html#af5fb25f0c7f8bdad88b9474f6047a673">dateToStr</a> () const</td></tr>
-<tr class="memdesc:af5fb25f0c7f8bdad88b9474f6047a673"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return day in string format.  <a href="class_date.html#af5fb25f0c7f8bdad88b9474f6047a673">More...</a><br /></td></tr>
-<tr class="separator:af5fb25f0c7f8bdad88b9474f6047a673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb0ababcab5b3fe87fea10f0c96cb94b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_my_string.html">MyString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_date.html#abb0ababcab5b3fe87fea10f0c96cb94b">dateToStr</a> () const</td></tr>
+<tr class="memdesc:abb0ababcab5b3fe87fea10f0c96cb94b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return day in string format.  <a href="class_date.html#abb0ababcab5b3fe87fea10f0c96cb94b">More...</a><br /></td></tr>
+<tr class="separator:abb0ababcab5b3fe87fea10f0c96cb94b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8eb06c53935ee7106a30a70e8aef913f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_date.html#a8eb06c53935ee7106a30a70e8aef913f">cmp</a> (const <a class="el" href="class_date.html">Date</a> &amp;other)</td></tr>
 <tr class="memdesc:a8eb06c53935ee7106a30a70e8aef913f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare if two dates are equal.  <a href="class_date.html#a8eb06c53935ee7106a30a70e8aef913f">More...</a><br /></td></tr>
 <tr class="separator:a8eb06c53935ee7106a30a70e8aef913f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -98,6 +98,9 @@ Friends</h2></td></tr>
 <tr class="memitem:a77295c90777b9b83a48879c779e7c58b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_date.html#a77295c90777b9b83a48879c779e7c58b">less</a> (<a class="el" href="class_date.html">Date</a> first, <a class="el" href="class_date.html">Date</a> second)</td></tr>
 <tr class="memdesc:a77295c90777b9b83a48879c779e7c58b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return if date is early than other date.  <a href="class_date.html#a77295c90777b9b83a48879c779e7c58b">More...</a><br /></td></tr>
 <tr class="separator:a77295c90777b9b83a48879c779e7c58b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a979c6b0ce07a9560a2129b81363b84f9"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_date.html#a979c6b0ce07a9560a2129b81363b84f9">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="class_date.html">Date</a> &amp;date)</td></tr>
+<tr class="memdesc:a979c6b0ce07a9560a2129b81363b84f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write to file.  <a href="class_date.html#a979c6b0ce07a9560a2129b81363b84f9">More...</a><br /></td></tr>
+<tr class="separator:a979c6b0ce07a9560a2129b81363b84f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a28c6604a0f8ed8216becf24abc20cf5b"></a>
@@ -157,14 +160,14 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="af5fb25f0c7f8bdad88b9474f6047a673"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5fb25f0c7f8bdad88b9474f6047a673">&#9670;&nbsp;</a></span>dateToStr()</h2>
+<a id="abb0ababcab5b3fe87fea10f0c96cb94b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb0ababcab5b3fe87fea10f0c96cb94b">&#9670;&nbsp;</a></span>dateToStr()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char * Date::dateToStr </td>
+          <td class="memname"><a class="el" href="class_my_string.html">MyString</a> Date::dateToStr </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -269,6 +272,44 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return if date is early than other date. </p>
+
+</div>
+</div>
+<a id="a979c6b0ce07a9560a2129b81363b84f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a979c6b0ce07a9560a2129b81363b84f9">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>date</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Write to file. </p>
 
 </div>
 </div>

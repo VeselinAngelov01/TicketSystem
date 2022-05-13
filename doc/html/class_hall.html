@@ -63,6 +63,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_hall-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Hall Class Reference</div>  </div>
@@ -76,6 +77,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aabef1eb128af8931c4d2488a8e1904d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#aabef1eb128af8931c4d2488a8e1904d2">Hall</a> (unsigned int id, unsigned int rows, unsigned int sizeOfRows)</td></tr>
 <tr class="memdesc:aabef1eb128af8931c4d2488a8e1904d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_hall.html#aabef1eb128af8931c4d2488a8e1904d2">More...</a><br /></td></tr>
 <tr class="separator:aabef1eb128af8931c4d2488a8e1904d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56a5d1a5966f38c9c55fa74168f9f0e3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a56a5d1a5966f38c9c55fa74168f9f0e3">Hall</a> (unsigned int id, unsigned int rows, unsigned int sizeOfRows, unsigned int sizeOfActs)</td></tr>
+<tr class="separator:a56a5d1a5966f38c9c55fa74168f9f0e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28d5f4ed9d21684b7359dc980eacb8a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a28d5f4ed9d21684b7359dc980eacb8a0">~Hall</a> ()</td></tr>
 <tr class="memdesc:a28d5f4ed9d21684b7359dc980eacb8a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="class_hall.html#a28d5f4ed9d21684b7359dc980eacb8a0">More...</a><br /></td></tr>
 <tr class="separator:a28d5f4ed9d21684b7359dc980eacb8a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -85,18 +88,20 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abf9081e1b01f1997bfb54989858da857"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#abf9081e1b01f1997bfb54989858da857">isFree</a> (<a class="el" href="class_date.html">Date</a> date) const</td></tr>
 <tr class="memdesc:abf9081e1b01f1997bfb54989858da857"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return if there are no acts in current hall on this day.  <a href="class_hall.html#abf9081e1b01f1997bfb54989858da857">More...</a><br /></td></tr>
 <tr class="separator:abf9081e1b01f1997bfb54989858da857"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a190bf3af4a6c3e333418e7af8fe8418a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a190bf3af4a6c3e333418e7af8fe8418a">findOnDate</a> (char *actName, <a class="el" href="class_date.html">Date</a> date)</td></tr>
-<tr class="memdesc:a190bf3af4a6c3e333418e7af8fe8418a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print all free places for specified act on daye.  <a href="class_hall.html#a190bf3af4a6c3e333418e7af8fe8418a">More...</a><br /></td></tr>
-<tr class="separator:a190bf3af4a6c3e333418e7af8fe8418a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3a6f549e6f09c791f95b482634a9d0e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#ae3a6f549e6f09c791f95b482634a9d0e">findAndReserve</a> (char *actName, <a class="el" href="class_date.html">Date</a> date, unsigned int row, unsigned int place, char *password, char *note=nullptr)</td></tr>
-<tr class="memdesc:ae3a6f549e6f09c791f95b482634a9d0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserve ticket.  <a href="class_hall.html#ae3a6f549e6f09c791f95b482634a9d0e">More...</a><br /></td></tr>
-<tr class="separator:ae3a6f549e6f09c791f95b482634a9d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69473c6851f17063c467b3136c35a141"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a69473c6851f17063c467b3136c35a141">removeReservation</a> (char *actName, <a class="el" href="class_date.html">Date</a> date, unsigned int row, unsigned int place, char *password)</td></tr>
-<tr class="memdesc:a69473c6851f17063c467b3136c35a141"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove reservation.  <a href="class_hall.html#a69473c6851f17063c467b3136c35a141">More...</a><br /></td></tr>
-<tr class="separator:a69473c6851f17063c467b3136c35a141"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ab0501e232d9e87f43c4564e2ec9883"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a9ab0501e232d9e87f43c4564e2ec9883">buy</a> (unsigned int row, unsigned int place, int actIndex, char *password=nullptr)</td></tr>
-<tr class="memdesc:a9ab0501e232d9e87f43c4564e2ec9883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buy ticket.  <a href="class_hall.html#a9ab0501e232d9e87f43c4564e2ec9883">More...</a><br /></td></tr>
-<tr class="separator:a9ab0501e232d9e87f43c4564e2ec9883"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4be884b29aa2912bb33947a0fb0a9e3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a4be884b29aa2912bb33947a0fb0a9e3a">findOnDate</a> (<a class="el" href="class_my_string.html">MyString</a> actName, <a class="el" href="class_date.html">Date</a> date)</td></tr>
+<tr class="memdesc:a4be884b29aa2912bb33947a0fb0a9e3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print all free places for specified act on daye.  <a href="class_hall.html#a4be884b29aa2912bb33947a0fb0a9e3a">More...</a><br /></td></tr>
+<tr class="separator:a4be884b29aa2912bb33947a0fb0a9e3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb414f38fab8dfd424d22f580d7f97ff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#adb414f38fab8dfd424d22f580d7f97ff">findAndReserve</a> (<a class="el" href="class_my_string.html">MyString</a> actName, <a class="el" href="class_date.html">Date</a> date, unsigned int row, unsigned int place, <a class="el" href="class_my_string.html">MyString</a> password)</td></tr>
+<tr class="memdesc:adb414f38fab8dfd424d22f580d7f97ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserve ticket.  <a href="class_hall.html#adb414f38fab8dfd424d22f580d7f97ff">More...</a><br /></td></tr>
+<tr class="separator:adb414f38fab8dfd424d22f580d7f97ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31643120e82d8ceb5e05848557b26227"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a31643120e82d8ceb5e05848557b26227">findAndReserve</a> (<a class="el" href="class_my_string.html">MyString</a> actName, <a class="el" href="class_date.html">Date</a> date, unsigned int row, unsigned int place, <a class="el" href="class_my_string.html">MyString</a> password, <a class="el" href="class_my_string.html">MyString</a> note)</td></tr>
+<tr class="separator:a31643120e82d8ceb5e05848557b26227"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a3300da52216907b476e91af1b3d8d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a0a3300da52216907b476e91af1b3d8d8">removeReservation</a> (<a class="el" href="class_my_string.html">MyString</a> actName, <a class="el" href="class_date.html">Date</a> date, unsigned int row, unsigned int place, <a class="el" href="class_my_string.html">MyString</a> password)</td></tr>
+<tr class="memdesc:a0a3300da52216907b476e91af1b3d8d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove reservation.  <a href="class_hall.html#a0a3300da52216907b476e91af1b3d8d8">More...</a><br /></td></tr>
+<tr class="separator:a0a3300da52216907b476e91af1b3d8d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a7da3424704f4d28e4dbd9b1c863d5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a5a7da3424704f4d28e4dbd9b1c863d5c">buy</a> (unsigned int actIndex, unsigned int row, unsigned int place)</td></tr>
+<tr class="memdesc:a5a7da3424704f4d28e4dbd9b1c863d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buy ticket.  <a href="class_hall.html#a5a7da3424704f4d28e4dbd9b1c863d5c">More...</a><br /></td></tr>
+<tr class="separator:a5a7da3424704f4d28e4dbd9b1c863d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0eaad68e3a340d4e3a02451fac3c99f4"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a0eaad68e3a340d4e3a02451fac3c99f4">getAllPlaces</a> () const</td></tr>
 <tr class="memdesc:a0eaad68e3a340d4e3a02451fac3c99f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return all seats.  <a href="class_hall.html#a0eaad68e3a340d4e3a02451fac3c99f4">More...</a><br /></td></tr>
 <tr class="separator:a0eaad68e3a340d4e3a02451fac3c99f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,29 +114,38 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a61b429b49cbb14b737f6e0ce71875af7"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a61b429b49cbb14b737f6e0ce71875af7">getSizeOfRow</a> () const</td></tr>
 <tr class="memdesc:a61b429b49cbb14b737f6e0ce71875af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return hall length of row.  <a href="class_hall.html#a61b429b49cbb14b737f6e0ce71875af7">More...</a><br /></td></tr>
 <tr class="separator:a61b429b49cbb14b737f6e0ce71875af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af63e5995fa4c92ca848f85f49764905d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#af63e5995fa4c92ca848f85f49764905d">findAct</a> (char *actName, <a class="el" href="class_date.html">Date</a> date)</td></tr>
-<tr class="separator:af63e5995fa4c92ca848f85f49764905d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99451c5cb02c2227d23717a99ea3d65d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a99451c5cb02c2227d23717a99ea3d65d">findAct</a> (<a class="el" href="class_my_string.html">MyString</a> actName, <a class="el" href="class_date.html">Date</a> date)</td></tr>
+<tr class="separator:a99451c5cb02c2227d23717a99ea3d65d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af86d81aeb26ee491a6da31e3837b44ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#af86d81aeb26ee491a6da31e3837b44ed">printAllActs</a> () const</td></tr>
 <tr class="memdesc:af86d81aeb26ee491a6da31e3837b44ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print all acts on all days.  <a href="class_hall.html#af86d81aeb26ee491a6da31e3837b44ed">More...</a><br /></td></tr>
 <tr class="separator:af86d81aeb26ee491a6da31e3837b44ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a769983f8c2e8475afe03082fb4a8818e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a769983f8c2e8475afe03082fb4a8818e">printSpecificAct</a> (char *name) const</td></tr>
-<tr class="memdesc:a769983f8c2e8475afe03082fb4a8818e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print specified act on all days.  <a href="class_hall.html#a769983f8c2e8475afe03082fb4a8818e">More...</a><br /></td></tr>
-<tr class="separator:a769983f8c2e8475afe03082fb4a8818e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2ab4545c33cea7d7184163c38ecd1d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#af2ab4545c33cea7d7184163c38ecd1d5">printSpecificAct</a> (<a class="el" href="class_my_string.html">MyString</a> name) const</td></tr>
+<tr class="memdesc:af2ab4545c33cea7d7184163c38ecd1d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print specified act on all days.  <a href="class_hall.html#af2ab4545c33cea7d7184163c38ecd1d5">More...</a><br /></td></tr>
+<tr class="separator:af2ab4545c33cea7d7184163c38ecd1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9314457fd31921f29e97841698f8f2e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a9314457fd31921f29e97841698f8f2e2">printOnSpecificDate</a> (<a class="el" href="class_date.html">Date</a> date) const</td></tr>
 <tr class="memdesc:a9314457fd31921f29e97841698f8f2e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print all acts on specified day.  <a href="class_hall.html#a9314457fd31921f29e97841698f8f2e2">More...</a><br /></td></tr>
 <tr class="separator:a9314457fd31921f29e97841698f8f2e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a443a9a57af917b00b7dd976ac4871dfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a443a9a57af917b00b7dd976ac4871dfe">print</a> (char *name, <a class="el" href="class_date.html">Date</a> date) const</td></tr>
-<tr class="memdesc:a443a9a57af917b00b7dd976ac4871dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print act on date.  <a href="class_hall.html#a443a9a57af917b00b7dd976ac4871dfe">More...</a><br /></td></tr>
-<tr class="separator:a443a9a57af917b00b7dd976ac4871dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0331be8c3946ec439f4c237f94c3b75"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#ae0331be8c3946ec439f4c237f94c3b75">specificTicketType</a> (unsigned int row, unsigned int place, int actIndex)</td></tr>
-<tr class="separator:ae0331be8c3946ec439f4c237f94c3b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a625a93e0a394daf16bfa5f3e9a8d9708"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a625a93e0a394daf16bfa5f3e9a8d9708">print</a> (<a class="el" href="class_my_string.html">MyString</a> name, <a class="el" href="class_date.html">Date</a> date) const</td></tr>
+<tr class="memdesc:a625a93e0a394daf16bfa5f3e9a8d9708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print act on date.  <a href="class_hall.html#a625a93e0a394daf16bfa5f3e9a8d9708">More...</a><br /></td></tr>
+<tr class="separator:a625a93e0a394daf16bfa5f3e9a8d9708"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a598ff368808ad2ec0b4b31805710661c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a598ff368808ad2ec0b4b31805710661c">printFromTo</a> (<a class="el" href="class_date.html">Date</a> firstDate, <a class="el" href="class_date.html">Date</a> secondDate)</td></tr>
-<tr class="memdesc:a598ff368808ad2ec0b4b31805710661c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print acts from date to date (inclusive)  <a href="class_hall.html#a598ff368808ad2ec0b4b31805710661c">More...</a><br /></td></tr>
 <tr class="separator:a598ff368808ad2ec0b4b31805710661c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a8dbc080dcd6d5263283bea6e400ca6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a0a8dbc080dcd6d5263283bea6e400ca6">readFromFile</a> (<a class="el" href="class_my_string.html">MyString</a> file)</td></tr>
+<tr class="memdesc:a0a8dbc080dcd6d5263283bea6e400ca6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read from file.  <a href="class_hall.html#a0a8dbc080dcd6d5263283bea6e400ca6">More...</a><br /></td></tr>
+<tr class="separator:a0a8dbc080dcd6d5263283bea6e400ca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4859f01dc960ce4b06022f63eb79ffed"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a4859f01dc960ce4b06022f63eb79ffed">getSizeOfActs</a> () const</td></tr>
+<tr class="memdesc:a4859f01dc960ce4b06022f63eb79ffed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return size of all acts in current hall.  <a href="class_hall.html#a4859f01dc960ce4b06022f63eb79ffed">More...</a><br /></td></tr>
+<tr class="separator:a4859f01dc960ce4b06022f63eb79ffed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a9230c2db3eefaaa735ac30a7de923ecb"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hall.html#a9230c2db3eefaaa735ac30a7de923ecb">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="class_hall.html">Hall</a> &amp;hall)</td></tr>
+<tr class="memdesc:a9230c2db3eefaaa735ac30a7de923ecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write to file.  <a href="class_hall.html#a9230c2db3eefaaa735ac30a7de923ecb">More...</a><br /></td></tr>
+<tr class="separator:a9230c2db3eefaaa735ac30a7de923ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aabef1eb128af8931c4d2488a8e1904d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabef1eb128af8931c4d2488a8e1904d2">&#9670;&nbsp;</a></span>Hall()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aabef1eb128af8931c4d2488a8e1904d2">&#9670;&nbsp;</a></span>Hall() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,6 +177,46 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructor. </p>
+
+</div>
+</div>
+<a id="a56a5d1a5966f38c9c55fa74168f9f0e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56a5d1a5966f38c9c55fa74168f9f0e3">&#9670;&nbsp;</a></span>Hall() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Hall::Hall </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>rows</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>sizeOfRows</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>sizeOfActs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -206,15 +260,21 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9ab0501e232d9e87f43c4564e2ec9883"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ab0501e232d9e87f43c4564e2ec9883">&#9670;&nbsp;</a></span>buy()</h2>
+<a id="a5a7da3424704f4d28e4dbd9b1c863d5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a7da3424704f4d28e4dbd9b1c863d5c">&#9670;&nbsp;</a></span>buy()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Hall::buy </td>
+          <td class="memname">void Hall::buy </td>
           <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>actIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>row</em>, </td>
         </tr>
@@ -222,19 +282,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>place</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>actIndex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>password</em> = <code>nullptr</code>&#160;</td>
+          <td class="paramname"><em>place</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -248,8 +296,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af63e5995fa4c92ca848f85f49764905d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af63e5995fa4c92ca848f85f49764905d">&#9670;&nbsp;</a></span>findAct()</h2>
+<a id="a99451c5cb02c2227d23717a99ea3d65d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99451c5cb02c2227d23717a99ea3d65d">&#9670;&nbsp;</a></span>findAct()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -257,7 +305,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">int Hall::findAct </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_my_string.html">MyString</a>&#160;</td>
           <td class="paramname"><em>actName</em>, </td>
         </tr>
         <tr>
@@ -278,8 +326,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae3a6f549e6f09c791f95b482634a9d0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3a6f549e6f09c791f95b482634a9d0e">&#9670;&nbsp;</a></span>findAndReserve()</h2>
+<a id="adb414f38fab8dfd424d22f580d7f97ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb414f38fab8dfd424d22f580d7f97ff">&#9670;&nbsp;</a></span>findAndReserve() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -287,7 +335,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">int Hall::findAndReserve </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_my_string.html">MyString</a>&#160;</td>
           <td class="paramname"><em>actName</em>, </td>
         </tr>
         <tr>
@@ -311,14 +359,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>password</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>note</em> = <code>nullptr</code>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_my_string.html">MyString</a>&#160;</td>
+          <td class="paramname"><em>password</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -332,8 +374,60 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a190bf3af4a6c3e333418e7af8fe8418a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a190bf3af4a6c3e333418e7af8fe8418a">&#9670;&nbsp;</a></span>findOnDate()</h2>
+<a id="a31643120e82d8ceb5e05848557b26227"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31643120e82d8ceb5e05848557b26227">&#9670;&nbsp;</a></span>findAndReserve() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Hall::findAndReserve </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_my_string.html">MyString</a>&#160;</td>
+          <td class="paramname"><em>actName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_date.html">Date</a>&#160;</td>
+          <td class="paramname"><em>date</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>place</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_my_string.html">MyString</a>&#160;</td>
+          <td class="paramname"><em>password</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_my_string.html">MyString</a>&#160;</td>
+          <td class="paramname"><em>note</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4be884b29aa2912bb33947a0fb0a9e3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4be884b29aa2912bb33947a0fb0a9e3a">&#9670;&nbsp;</a></span>findOnDate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -341,7 +435,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Hall::findOnDate </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_my_string.html">MyString</a>&#160;</td>
           <td class="paramname"><em>actName</em>, </td>
         </tr>
         <tr>
@@ -419,6 +513,25 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a4859f01dc960ce4b06022f63eb79ffed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4859f01dc960ce4b06022f63eb79ffed">&#9670;&nbsp;</a></span>getSizeOfActs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Hall::getSizeOfActs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return size of all acts in current hall. </p>
+
+</div>
+</div>
 <a id="a61b429b49cbb14b737f6e0ce71875af7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a61b429b49cbb14b737f6e0ce71875af7">&#9670;&nbsp;</a></span>getSizeOfRow()</h2>
 
@@ -458,8 +571,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a443a9a57af917b00b7dd976ac4871dfe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a443a9a57af917b00b7dd976ac4871dfe">&#9670;&nbsp;</a></span>print()</h2>
+<a id="a625a93e0a394daf16bfa5f3e9a8d9708"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a625a93e0a394daf16bfa5f3e9a8d9708">&#9670;&nbsp;</a></span>print()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -467,7 +580,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Hall::print </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_my_string.html">MyString</a>&#160;</td>
           <td class="paramname"><em>name</em>, </td>
         </tr>
         <tr>
@@ -532,8 +645,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Print acts from date to date (inclusive) </p>
+<p>Return ticket type<br  />
+(See more on <a class="el" href="_ticket_8hpp.html">Ticket.hpp</a>) Print acts from date to date (inclusive) </p>
 
 </div>
 </div>
@@ -557,8 +670,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a769983f8c2e8475afe03082fb4a8818e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a769983f8c2e8475afe03082fb4a8818e">&#9670;&nbsp;</a></span>printSpecificAct()</h2>
+<a id="af2ab4545c33cea7d7184163c38ecd1d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2ab4545c33cea7d7184163c38ecd1d5">&#9670;&nbsp;</a></span>printSpecificAct()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -566,7 +679,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Hall::printSpecificAct </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_my_string.html">MyString</a>&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -577,8 +690,28 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a69473c6851f17063c467b3136c35a141"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69473c6851f17063c467b3136c35a141">&#9670;&nbsp;</a></span>removeReservation()</h2>
+<a id="a0a8dbc080dcd6d5263283bea6e400ca6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a8dbc080dcd6d5263283bea6e400ca6">&#9670;&nbsp;</a></span>readFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Hall::readFromFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_my_string.html">MyString</a>&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read from file. </p>
+
+</div>
+</div>
+<a id="a0a3300da52216907b476e91af1b3d8d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a3300da52216907b476e91af1b3d8d8">&#9670;&nbsp;</a></span>removeReservation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -586,7 +719,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">int Hall::removeReservation </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_my_string.html">MyString</a>&#160;</td>
           <td class="paramname"><em>actName</em>, </td>
         </tr>
         <tr>
@@ -610,7 +743,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_my_string.html">MyString</a>&#160;</td>
           <td class="paramname"><em>password</em>&#160;</td>
         </tr>
         <tr>
@@ -625,29 +758,27 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae0331be8c3946ec439f4c237f94c3b75"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0331be8c3946ec439f4c237f94c3b75">&#9670;&nbsp;</a></span>specificTicketType()</h2>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a9230c2db3eefaaa735ac30a7de923ecb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9230c2db3eefaaa735ac30a7de923ecb">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Hall::specificTicketType </td>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>row</em>, </td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>place</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>actIndex</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_hall.html">Hall</a> &amp;&#160;</td>
+          <td class="paramname"><em>hall</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -655,9 +786,14 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Return ticket type<br  />
-(See more on <a class="el" href="_ticket_8hpp.html">Ticket.hpp</a>) </p>
+
+<p>Write to file. </p>
 
 </div>
 </div>
