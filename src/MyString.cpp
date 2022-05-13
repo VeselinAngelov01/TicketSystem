@@ -37,14 +37,6 @@ MyString::~MyString()
 {
     delete [] this->data;
 }
-int MyString::find(char what, int startIndex)
-{
-    for(int i=startIndex;i<size;++i)
-    {
-        if(data[i]==what) return i;
-    }
-    return -1;
-}
 
 void MyString::resize()
 {
@@ -68,15 +60,7 @@ void MyString::append(char c)
     data[size++]=c;
     data[size]='\0';
 }
-MyString MyString::subString(int startIndex, int endIndex)
-{
-    MyString result;
-    for(int i=startIndex;i<=endIndex;++i)
-    {
-        result.append(data[i]);
-    }
-    return result;
-}
+
 unsigned int MyString::getSize() const
 {
     return this->size;
@@ -86,33 +70,6 @@ char *MyString::getData() const
     return this->data;
 }
 
-MyString* MyString::splitString(char delimiter,int& sizeOfNewString)
-{
-    int cntOfDel = 0;
-    for(int i=0;i<size;++i)
-    {
-        if(data[i]==delimiter) cntOfDel++;
-    }
-    MyString* arrOfMyStrings = new MyString[cntOfDel];
-    int prevIndexDel = 0;
-    int currIndexDel = find(delimiter);
-    while(prevIndexDel!=-1)
-    {
-        if(currIndexDel==-1)
-        {
-            arrOfMyStrings[sizeOfNewString] = subString(prevIndexDel,size-1);
-            prevIndexDel=-1;
-        }
-        else if(sizeOfNewString==0) arrOfMyStrings[sizeOfNewString++]=subString(prevIndexDel,currIndexDel-1);
-        else
-        {
-            arrOfMyStrings[sizeOfNewString++]=subString(prevIndexDel+1,currIndexDel-1);
-        }
-        prevIndexDel = currIndexDel;
-        currIndexDel = find(delimiter,prevIndexDel+1);
-    }
-    return arrOfMyStrings;
-}
 
 std::ostream &operator<<(std::ostream &out, const MyString &myString)
 {

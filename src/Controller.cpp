@@ -1,19 +1,23 @@
 #include "../h/Controller.hpp"
 
-Controller::Controller()
+/// Default in null (not created)
+Controller *Controller::controller = nullptr;
+
+Controller *Controller::getController()
 {
-    this->halls = new Hall *[2];
-    this->hallsCount = 2;
-    this->halls[0] = new Hall(1, 50, 50);
-    this->halls[1] = new Hall(2, 10, 30);
+    if(!controller)
+    {
+        controller = new Controller();
+    }
+    return controller;
 }
 
-Controller &Controller::instance()
+Controller::Controller()
 {
-    static Controller inst;
-    inst.readFromFile();
-    return inst;
+    this->halls = nullptr;
+    this->hallsCount = 0;
 }
+
 Controller::~Controller()
 {
     for (size_t i = 0; i < this->hallsCount; ++i)
@@ -38,6 +42,7 @@ void Controller::Run()
 {
     help();
     int currentChoice;
+    readFromFile();
     while (true)
     {
         std::cin >> currentChoice;
@@ -409,7 +414,6 @@ void Controller::readFromFile()
                 if (currentHall >= hallsCount)
                     throw std::invalid_argument("Invalid data in file Halls.txt");
                 MyString file(fileName);
-
                 this->halls[currentHall] = new Hall(id, row, sizeOfRow, sizeOfActs);
                 this->halls[currentHall++]->readFromFile(fileName);
             }

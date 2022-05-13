@@ -4,7 +4,9 @@
 /// Here can be specified file to be read
 int main()
 {
-    Controller controller = Controller::instance();
-    controller.Run();
+    /// Github: https://github.com/VeselinAngelov01/TicketSystem
+    Controller* controller=Controller::getController();
+    controller->Run();
+    delete controller;
     return 0;
 }

@@ -66,7 +66,6 @@ bool Date::cmp(const Date &other)
 }
 MyString Date::dateToStr() const
 {
-    
     MyString str;
     if (day < exponent)
     {
